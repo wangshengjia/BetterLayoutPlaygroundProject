@@ -13,6 +13,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
+
+    private var elements = [Element]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +42,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             .observeOn(QueueScheduler.mainQueueScheduler)
 
-        searchStrings.start { event in
+        searchStrings.start {[weak self] event in
             switch event {
             case let .Next(value):
                 if let value = value as? Dictionary<String, AnyObject>,
-                    let elements = value["elements"] as? Array<Dictionary<String, AnyObject>> {
-                    print("Next event: \(elements)")
+                    let elementDictionaries = value["elements"] as? Array<Dictionary<String, AnyObject>> {
+                        self?.elements = elementDictionaries.map{ elementDictionary -> Element in
+                            return Element(dictionary: elementDictionary)
+                        }
+                        self?.collectionView.reloadData()
                 }
             case let .Failed(error):
                 print("Failed event: \(error)")
@@ -57,8 +62,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print("Interrupted event")
             }
         }
-
-
     }
 
     override func didReceiveMemoryWarning() {
