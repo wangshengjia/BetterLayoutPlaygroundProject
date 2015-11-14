@@ -92,6 +92,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		35566D2C1BF7A15900404ABF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35F3BD8E1BF53ADF00983F30 /* Card.swift */,
+				35566D2A1BF79E2700404ABF /* Element.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		35566D2D1BF7A15F00404ABF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				35C8A7D11BF5359800EB18BD /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		35566D2E1BF7A16F00404ABF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		35C8A7C31BF5359800EB18BD = {
 			isa = PBXGroup;
 			children = (
@@ -118,9 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				35C8A7CF1BF5359800EB18BD /* AppDelegate.swift */,
-				35C8A7D11BF5359800EB18BD /* ViewController.swift */,
-				35F3BD8E1BF53ADF00983F30 /* Card.swift */,
-				35566D2A1BF79E2700404ABF /* Element.swift */,
+				35566D2E1BF7A16F00404ABF /* Extensions */,
+				35566D2D1BF7A15F00404ABF /* Controllers */,
+				35566D2C1BF7A15900404ABF /* Model */,
 				35C8A7D31BF5359800EB18BD /* Main.storyboard */,
 				35C8A7D61BF5359800EB18BD /* Assets.xcassets */,
 				35C8A7D81BF5359800EB18BD /* LaunchScreen.storyboard */,
