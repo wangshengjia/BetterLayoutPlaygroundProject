@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Element {
+class Element {
 
     let elementId: Int
 

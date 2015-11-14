@@ -9,16 +9,21 @@
 import UIKit
 import ReactiveCocoa
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.registerClass(ReusableCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(ReusableCollectionViewCell.self))
+        }
+    }
 
-    private var elements = [Element]()
+    private var elements: Array<Element> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // a little bit hack, should not ship to production
         guard let textField = searchBar.valueForKey("_searchField") as? UITextField else {
             return
         }
@@ -64,30 +69,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-
+    // MARK: Collection View DataSource
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return elements.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(ReusableCollectionViewCell.self), forIndexPath: indexPath) as? ReusableCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        cell.configureWithItem(elements[indexPath.item], reuseIdentifier: Configurations.CellType.A)
         return cell
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
 
+    // MARK: Collection View Layout
 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), 80)
     }
 
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.5
     }
-
 }
 
