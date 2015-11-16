@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		35566D2B1BF79E2700404ABF /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D2A1BF79E2700404ABF /* Element.swift */; };
+		35566D301BF7A46A00404ABF /* CollectionViewCellConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D2F1BF7A46A00404ABF /* CollectionViewCellConfigurations.swift */; };
+		35566D381BF7A48300404ABF /* CellComponentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D321BF7A48300404ABF /* CellComponentProtocol.swift */; };
+		35566D391BF7A48300404ABF /* CellComponentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D331BF7A48300404ABF /* CellComponentLabel.swift */; };
+		35566D3A1BF7A48300404ABF /* CellComponentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D341BF7A48300404ABF /* CellComponentImageView.swift */; };
+		35566D3B1BF7A48300404ABF /* ReusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D351BF7A48300404ABF /* ReusableCollectionViewCell.swift */; };
+		35566D3C1BF7A48300404ABF /* CellComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 35566D371BF7A48300404ABF /* CellComponentFactory.m */; };
 		35C8A7D01BF5359800EB18BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C8A7CF1BF5359800EB18BD /* AppDelegate.swift */; };
 		35C8A7D21BF5359800EB18BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C8A7D11BF5359800EB18BD /* ViewController.swift */; };
 		35C8A7D51BF5359800EB18BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C8A7D31BF5359800EB18BD /* Main.storyboard */; };
@@ -39,6 +45,14 @@
 /* Begin PBXFileReference section */
 		130604308994FDE00875DC97 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		35566D2A1BF79E2700404ABF /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		35566D2F1BF7A46A00404ABF /* CollectionViewCellConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCellConfigurations.swift; sourceTree = "<group>"; };
+		35566D311BF7A48200404ABF /* PlaygroundProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlaygroundProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		35566D321BF7A48300404ABF /* CellComponentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellComponentProtocol.swift; sourceTree = "<group>"; };
+		35566D331BF7A48300404ABF /* CellComponentLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellComponentLabel.swift; sourceTree = "<group>"; };
+		35566D341BF7A48300404ABF /* CellComponentImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellComponentImageView.swift; sourceTree = "<group>"; };
+		35566D351BF7A48300404ABF /* ReusableCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCollectionViewCell.swift; sourceTree = "<group>"; };
+		35566D361BF7A48300404ABF /* CellComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellComponentFactory.h; sourceTree = "<group>"; };
+		35566D371BF7A48300404ABF /* CellComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellComponentFactory.m; sourceTree = "<group>"; };
 		35C8A7CC1BF5359800EB18BD /* PlaygroundProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C8A7CF1BF5359800EB18BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35C8A7D11BF5359800EB18BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +130,44 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		35566D3D1BF7A49500404ABF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35566D401BF7A4B700404ABF /* Cells */,
+				35566D3F1BF7A4AE00404ABF /* Components */,
+				35566D3E1BF7A4A100404ABF /* Configurations */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		35566D3E1BF7A4A100404ABF /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				35566D2F1BF7A46A00404ABF /* CollectionViewCellConfigurations.swift */,
+			);
+			name = Configurations;
+			sourceTree = "<group>";
+		};
+		35566D3F1BF7A4AE00404ABF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				35566D321BF7A48300404ABF /* CellComponentProtocol.swift */,
+				35566D331BF7A48300404ABF /* CellComponentLabel.swift */,
+				35566D341BF7A48300404ABF /* CellComponentImageView.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		35566D401BF7A4B700404ABF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				35566D351BF7A48300404ABF /* ReusableCollectionViewCell.swift */,
+				35566D361BF7A48300404ABF /* CellComponentFactory.h */,
+				35566D371BF7A48300404ABF /* CellComponentFactory.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		35C8A7C31BF5359800EB18BD = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				35C8A7CF1BF5359800EB18BD /* AppDelegate.swift */,
+				35566D3D1BF7A49500404ABF /* Views */,
 				35566D2E1BF7A16F00404ABF /* Extensions */,
 				35566D2D1BF7A15F00404ABF /* Controllers */,
 				35566D2C1BF7A15900404ABF /* Model */,
@@ -149,6 +202,7 @@
 				35C8A7D61BF5359800EB18BD /* Assets.xcassets */,
 				35C8A7D81BF5359800EB18BD /* LaunchScreen.storyboard */,
 				35C8A7DB1BF5359800EB18BD /* Info.plist */,
+				35566D311BF7A48200404ABF /* PlaygroundProject-Bridging-Header.h */,
 			);
 			path = PlaygroundProject;
 			sourceTree = "<group>";
@@ -361,10 +415,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35566D3B1BF7A48300404ABF /* ReusableCollectionViewCell.swift in Sources */,
+				35566D3A1BF7A48300404ABF /* CellComponentImageView.swift in Sources */,
 				35C8A7D21BF5359800EB18BD /* ViewController.swift in Sources */,
 				35F3BD8F1BF53ADF00983F30 /* Card.swift in Sources */,
 				35566D2B1BF79E2700404ABF /* Element.swift in Sources */,
+				35566D391BF7A48300404ABF /* CellComponentLabel.swift in Sources */,
+				35566D3C1BF7A48300404ABF /* CellComponentFactory.m in Sources */,
 				35C8A7D01BF5359800EB18BD /* AppDelegate.swift in Sources */,
+				35566D301BF7A46A00404ABF /* CollectionViewCellConfigurations.swift in Sources */,
+				35566D381BF7A48300404ABF /* CellComponentProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,10 +567,13 @@
 			baseConfigurationReference = 130604308994FDE00875DC97 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PlaygroundProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.lemonde.LeMonde.PlaygroundProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlaygroundProject/PlaygroundProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -519,10 +582,12 @@
 			baseConfigurationReference = 40BBF99708A2184C72FA15F0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PlaygroundProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.lemonde.LeMonde.PlaygroundProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlaygroundProject/PlaygroundProject-Bridging-Header.h";
 			};
 			name = Release;
 		};
