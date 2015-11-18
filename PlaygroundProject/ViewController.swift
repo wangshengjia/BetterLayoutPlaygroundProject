@@ -14,7 +14,9 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            collectionView.registerClass(ReusableCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(ReusableCollectionViewCell.self))
+            for reuseId in Configurations.AllCellConfigurations.keys {
+                collectionView.registerClass(ReusableCollectionViewCell.self, forCellWithReuseIdentifier: reuseId)
+            }
         }
     }
 
@@ -34,7 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             .map { text in text as! String }
             .filter {text in text.characters.count > 3}
             .flatMap(.Latest) { (query: String) -> SignalProducer<(NSData, NSURLResponse), NSError> in
-                let URLRequest =  NSURLRequest(URL: NSURL(string: "http://api-cdn.lemonde.fr/ws/5/mobile/www/ios-phone/search/index.json?keywords=holland")!) // self.searchRequestWithEscapedQuery(query)
+                let URLRequest =  NSURLRequest(URL: NSURL(string: "http://api-cdn.lemonde.fr/ws/5/mobile/www/ios-phone/search/index.json?keywords=holland")!)
                 return NSURLSession.sharedSession()
                     .rac_dataWithRequest(URLRequest)
                     .flatMapError { error in
@@ -43,7 +45,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
                 }
             }
             .map { (data, URLResponse) -> AnyObject? in
-                return try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) //self.parseJSONResultsFromString(string)
+                return try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             }
             .observeOn(QueueScheduler.mainQueueScheduler)
 
@@ -76,11 +78,14 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(ReusableCollectionViewCell.self), forIndexPath: indexPath) as? ReusableCollectionViewCell else {
+
+        let reuseId = Configurations.CellType.A
+
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as? ReusableCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        cell.configureWithItem(elements[indexPath.item], reuseIdentifier: Configurations.CellType.A)
+        cell.configureWithItem(elements[indexPath.item], reuseIdentifier: reuseId)
         return cell
     }
 

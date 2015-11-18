@@ -29,11 +29,20 @@ class CellComponentLabel : UILabel, CellComponentProtocol {
     }
     
     func update(item: AnyObject) {
-        switch item {
-        case let item as Element:
-            self.text = "\(item.elementId)"
-        default:
+        guard let element = item as? Element else {
             assert(false, "can't handle item \(item) type")
+            return
+        }
+
+        switch componentKey {
+        case Configurations.Component.title:
+            self.text = "id: \(element.elementId)"
+        case Configurations.Component.subtitle:
+            self.text = "This is description"
+        case Configurations.Component.date:
+            self.text = "publication date"
+        default:
+            assert(false, "can't handle with component key: \(componentKey)")
         }
     }
 
