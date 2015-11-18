@@ -48,7 +48,23 @@ extension Configurations {
         CellKeys.metrics:layoutMetrics
     ]
 
-    static let AllCellConfigurations: Dictionary<String, Dictionary<String, AnyObject>> = [CellType.A: CellTypeA]
+    static let CellTypeB: Dictionary<String, AnyObject> = [
+        CellKeys.components: [Component.avatar, Component.title, Component.subtitle, Component.date],
+        CellKeys.styles: [Styles.Image.A, Styles.Title.A, Styles.Subtitle.A, Styles.Title.A],
+        CellKeys.layout: [
+            "H:|-left-[date]-(>=interspaceH)-[title]-interspaceH-[avatar(50)]-right-|",
+            "H:[subtitle]-interspaceH-[avatar]-right-|",
+            "V:|-top-[title]-interspaceV-[subtitle]-(>=bottom)-|",
+            "V:|-top-[avatar(50)]-(>=bottom)-|",
+            "V:|-top-[date]-(>=bottom)-|"
+        ],
+        CellKeys.metrics:layoutMetrics
+    ]
+
+    static let AllCellConfigurations: Dictionary<String, Dictionary<String, AnyObject>> = [
+        CellType.A: CellTypeA,
+        CellType.B: CellTypeB
+    ]
 
     static func CellConfigurationWithReuseIdentifier(reuseIdentifier: String) -> Dictionary<String, AnyObject>? {
         return AllCellConfigurations[reuseIdentifier]
@@ -92,7 +108,7 @@ extension Configurations {
         static let backgroundColor = "backgroundColor"
     }
 
-    static let TitleStyleA = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
+    static let TitleStyleA = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.grayColor()]
     static let SubtitleStyleA = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
     static let ImageStyleA = [Appearance.backgroundColor: UIColor.greenColor()]
     static let AllStyleConfigurations = [Styles.Title.A: TitleStyleA, Styles.Subtitle.A: SubtitleStyleA, Styles.Image.A: ImageStyleA]
