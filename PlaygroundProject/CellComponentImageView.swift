@@ -34,15 +34,16 @@ class CellComponentImageView : UIImageView, CellComponentProtocol {
 
         update(item)
     }
+    
     func update(item: AnyObject) {
-        switch item {
-        case let item as Element:
-            print(item)
-        default:
+        guard let element = item as? Element else {
             assert(false, "can't handle item \(item) type")
+            return
         }
-
+        
+        print(element)
     }
+
     func cleanUp() {
         self.image = nil
     }
