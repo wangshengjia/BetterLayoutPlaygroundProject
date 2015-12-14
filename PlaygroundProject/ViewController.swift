@@ -79,7 +79,13 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-        let reuseId = indexPath.item % 2 == 0 ? Configurations.CellType.A : Configurations.CellType.C
+        var reuseId: String
+        switch indexPath.item % 3 {
+        case 0: reuseId = Configurations.CellType.A
+        case 1: reuseId = Configurations.CellType.B
+        default: reuseId = Configurations.CellType.C
+        }
+
 
         guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as? ReusableCollectionViewCell else {
             return UICollectionViewCell()

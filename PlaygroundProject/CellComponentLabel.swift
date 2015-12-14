@@ -20,11 +20,9 @@ class CellComponentLabel : UILabel, CellComponentProtocol {
         super.init(coder: aDecoder)
     }
 
-    func setup(item: AnyObject, style: String) {
-        if let configuration = Configurations.StyleConfigurationWithKey(style) {
-            self.setValuesForKeysWithDictionary(configuration)
-        }
-        
+    func setup(item: AnyObject, style: [String:AnyObject]) {
+        self.setValuesForKeysWithDictionary(style)
+
         update(item)
     }
     

@@ -25,11 +25,9 @@ class CellComponentImageView : UIImageView, CellComponentProtocol {
 
     }
 
-    func setup(item: AnyObject, style: String) {
+    func setup(item: AnyObject, style: [String:AnyObject]) {
 
-        if let configuration = Configurations.StyleConfigurationWithKey(style) {
-            self.setValuesForKeysWithDictionary(configuration)
-        }
+        self.setValuesForKeysWithDictionary(style)
         self.addConstraint(NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1.0, constant: 0.0))
 
         update(item)

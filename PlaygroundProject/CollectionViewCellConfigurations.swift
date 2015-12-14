@@ -10,11 +10,19 @@ import Foundation
 import UIKit
 
 struct Configurations {
+    
+    struct CellKeys {
+        static let components = "CellComponentKeys"
+        static let styles = "CellComponentStyles"
+        static let layout = "CellComponentLayout"
+        static let metrics = "CellComponentLayoutMetrics"
+    }
+
     static let layoutMetrics = [
-        "top":10,
-        "bottom":10,
-        "left":10,
-        "right":10,
+        "top":20,
+        "bottom":20,
+        "left":20,
+        "right":20,
         "interspaceH":10,
         "interspaceV":10]
 
@@ -27,13 +35,6 @@ extension Configurations {
         static let A = "CellTypeA"
         static let B = "CellTypeB"
         static let C = "CellTypeC"
-    }
-
-    struct CellKeys {
-        static let components = "CellComponentKeys"
-        static let styles = "CellComponentStyles"
-        static let layout = "CellComponentLayout"
-        static let metrics = "CellComponentLayoutMetrics"
     }
 
     static let CellTypeA: Dictionary<String, AnyObject> = [
@@ -107,14 +108,14 @@ extension Configurations {
 
     struct Styles {
         struct Title {
-            static let A = "TitleStyleA"
-            static let B = "TitleStyleB"
+            static let A = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.grayColor()]
+            static let B = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.redColor(), Appearance.textAlignment: NSNumber(integer: NSTextAlignment.Center.rawValue)]
         }
         struct Subtitle {
-            static let A = "SubtitleStyleA"
+            static let A = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
         }
         struct Image {
-            static let A = "ImageStyleA"
+            static let A = [Appearance.backgroundColor: UIColor.greenColor()]
         }
     }
 
@@ -124,19 +125,11 @@ extension Configurations {
         static let backgroundColor = "backgroundColor"
         static let textAlignment = "textAlignment"
     }
-
-    static let TitleStyleA = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.grayColor()]
-    static let TitleStyleB: Dictionary<String, AnyObject> = [Appearance.font: UIFont.systemFontOfSize(15),
-        Appearance.textColor: UIColor.redColor(),
-        Appearance.textAlignment: NSNumber(integer: NSTextAlignment.Center.rawValue)]
-    static let SubtitleStyleA = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
-    static let ImageStyleA = [Appearance.backgroundColor: UIColor.greenColor()]
-    static let AllStyleConfigurations = [Styles.Title.A: TitleStyleA,
-        Styles.Title.B: TitleStyleB,
-        Styles.Subtitle.A: SubtitleStyleA,
-        Styles.Image.A: ImageStyleA]
-
-    static func StyleConfigurationWithKey(key: String) -> Dictionary<String, AnyObject>? {
-        return AllStyleConfigurations[key]
-    }
 }
+
+
+
+
+
+
+

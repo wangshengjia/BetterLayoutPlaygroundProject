@@ -11,7 +11,7 @@
 
     init(componentKey: String)
 
-    func setup(item: AnyObject, style: String)
+    func setup(item: AnyObject, style: [String:AnyObject])
     func update(item: AnyObject)
     func cleanUp()
 }
