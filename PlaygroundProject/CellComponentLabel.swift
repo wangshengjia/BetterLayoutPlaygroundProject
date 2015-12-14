@@ -34,11 +34,11 @@ class CellComponentLabel : UILabel, CellComponentProtocol {
 
         switch componentKey {
         case Configurations.Component.title:
-            self.text = "id: \(element.elementId)"
+            self.text = "\(element.elementId)"
         case Configurations.Component.subtitle:
-            self.text = "This is description"
+            self.text = element.login
         case Configurations.Component.date:
-            self.text = "publication date"
+            self.text = "date"
         default:
             assert(false, "can't handle with component key: \(componentKey)")
         }

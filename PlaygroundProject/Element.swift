@@ -11,14 +11,14 @@ import Foundation
 class Element {
 
     let elementId: Int
+    let avatalUrl: String
+    let login: String
 
-    // An naive implementation about json to model object
-    // Waiting for improving
+    // A naive implementation about converting json to model object
+    // Waiting for improvement
     init(dictionary: Dictionary<String, AnyObject>) {
-        if let id = dictionary["id"] as? Int {
-            elementId = id
-        } else {
-            elementId = 0
-        }
+        elementId = dictionary["id"] as? Int ?? 0
+        avatalUrl = dictionary["avatar_url"] as? String ?? ""
+        login = dictionary["login"] as? String ?? ""
     }
 }

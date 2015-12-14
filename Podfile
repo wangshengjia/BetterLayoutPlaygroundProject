@@ -8,4 +8,5 @@ link_with 'PlaygroundProject'
 
 # swift
 pod 'ReactiveCocoa', '4.0.0-alpha-3'
-
+pod 'Alamofire'
+pod 'AlamofireImage', '~> 2.0'

@@ -39,7 +39,7 @@ class CellComponentImageView : UIImageView, CellComponentProtocol {
             return
         }
         
-        print(element)
+        element.avatalUrl
     }
 
     func cleanUp() {

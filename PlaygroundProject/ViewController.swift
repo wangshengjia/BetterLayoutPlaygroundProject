@@ -36,7 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             .map { text in text as! String }
             .filter {text in text.characters.count > 3}
             .flatMap(.Latest) { (query: String) -> SignalProducer<(NSData, NSURLResponse), NSError> in
-                let URLRequest =  NSURLRequest(URL: NSURL(string: "http://api-cdn.lemonde.fr/ws/5/mobile/www/ios-phone/search/index.json?keywords=holland")!)
+                let URLRequest =  NSURLRequest(URL: NSURL(string: "https://api.github.com/search/users?q=\(query)&sort=followers")!)
                 return NSURLSession.sharedSession()
                     .rac_dataWithRequest(URLRequest)
                     .flatMapError { error in
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             switch event {
             case let .Next(value):
                 if let value = value as? Dictionary<String, AnyObject>,
-                    let elementDictionaries = value["elements"] as? Array<Dictionary<String, AnyObject>> {
+                    let elementDictionaries = value["items"] as? Array<Dictionary<String, AnyObject>> {
                         self?.elements = elementDictionaries.map{ elementDictionary -> Element in
                             return Element(dictionary: elementDictionary)
                         }
