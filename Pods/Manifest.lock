@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (3.1.3)
+  - AlamofireImage (2.1.1):
+    - Alamofire (~> 3.1)
   - ReactiveCocoa (4.0.0-alpha-3):
     - ReactiveCocoa/UI (= 4.0.0-alpha-3)
     - Result (~> 0.6-beta.4)
@@ -13,9 +16,13 @@ PODS:
   - Result (0.6.0-beta.6)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage (~> 2.0)
   - ReactiveCocoa (= 4.0.0-alpha-3)
 
 SPEC CHECKSUMS:
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
   ReactiveCocoa: f03dcfd385b0e4ee5b7a323f5e0b146a498e12d3
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
 
