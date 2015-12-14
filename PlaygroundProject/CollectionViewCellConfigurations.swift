@@ -115,7 +115,7 @@ extension Configurations {
             static let A = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
         }
         struct Image {
-            static let A = [Appearance.backgroundColor: UIColor.greenColor()]
+            static let A = [Appearance.contentMode: NSNumber(integer: UIViewContentMode.ScaleAspectFill.rawValue), Appearance.clipsToBounds: NSNumber(bool: true), Appearance.backgroundColor: UIColor.lightGrayColor()]
         }
     }
 
@@ -124,6 +124,8 @@ extension Configurations {
         static let textColor = "textColor"
         static let backgroundColor = "backgroundColor"
         static let textAlignment = "textAlignment"
+        static let contentMode = "contentMode"
+        static let clipsToBounds = "clipsToBounds"
     }
 }
 
