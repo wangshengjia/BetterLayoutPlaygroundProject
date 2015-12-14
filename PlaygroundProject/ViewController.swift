@@ -36,12 +36,17 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             .map { text in text as! String }
             .filter {text in text.characters.count > 3}
             .flatMap(.Latest) { (query: String) -> SignalProducer<(NSData, NSURLResponse), NSError> in
-                let URLRequest =  NSURLRequest(URL: NSURL(string: "http://api-cdn.lemonde.fr/ws/5/mobile/www/ios-phone/search/index.json?keywords=holland")!)
-                return NSURLSession.sharedSession()
-                    .rac_dataWithRequest(URLRequest)
-                    .flatMapError { error in
-                        print("Network error occurred: \(error)")
-                        return SignalProducer.empty
+
+                if let queryEncoded = query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()),
+                    let url = NSURL(string: "https://api.github.com/search/users?q=\(queryEncoded)&sort=score") {
+                    return NSURLSession.sharedSession()
+                        .rac_dataWithRequest(NSURLRequest(URL: url))
+                        .flatMapError { error in
+                            print("Network error occurred: \(error)")
+                            return SignalProducer.empty
+                    }
+                } else {
+                    return SignalProducer.empty
                 }
             }
             .map { (data, URLResponse) -> AnyObject? in
@@ -53,7 +58,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
             switch event {
             case let .Next(value):
                 if let value = value as? Dictionary<String, AnyObject>,
-                    let elementDictionaries = value["elements"] as? Array<Dictionary<String, AnyObject>> {
+                    let elementDictionaries = value["items"] as? Array<Dictionary<String, AnyObject>> {
                         self?.elements = elementDictionaries.map{ elementDictionary -> Element in
                             return Element(dictionary: elementDictionary)
                         }
@@ -99,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     // MARK: Collection View Layout
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), 80)
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), 120)
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

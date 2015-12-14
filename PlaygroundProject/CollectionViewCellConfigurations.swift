@@ -64,14 +64,14 @@ extension Configurations {
     ]
 
     static let CellTypeC: Dictionary<String, AnyObject> = [
-        CellKeys.components: [Component.avatar, Component.title, Component.date],
+        CellKeys.components: [Component.avatar, Component.title, Component.subtitle],
         CellKeys.styles: [Styles.Image.A, Styles.Title.B, Styles.Title.B],
         CellKeys.layout: [
             "H:|[avatar]|",
             "V:|[avatar]|",
             "H:|[title]|",
-            "H:|[date]|",
-            "V:|-top-[title]-interspaceV-[date]-(>=bottom)-|"
+            "H:|[subtitle]|",
+            "V:|-top-[title]-interspaceV-[subtitle]-(>=bottom)-|"
         ],
         CellKeys.metrics:layoutMetrics
     ]
@@ -115,7 +115,7 @@ extension Configurations {
             static let A = [Appearance.font: UIFont.systemFontOfSize(15), Appearance.textColor: UIColor.lightGrayColor()]
         }
         struct Image {
-            static let A = [Appearance.backgroundColor: UIColor.greenColor()]
+            static let A = [Appearance.contentMode: NSNumber(integer: UIViewContentMode.ScaleAspectFill.rawValue), Appearance.clipsToBounds: NSNumber(bool: true), Appearance.backgroundColor: UIColor.lightGrayColor()]
         }
     }
 
@@ -124,6 +124,8 @@ extension Configurations {
         static let textColor = "textColor"
         static let backgroundColor = "backgroundColor"
         static let textAlignment = "textAlignment"
+        static let contentMode = "contentMode"
+        static let clipsToBounds = "clipsToBounds"
     }
 }
 

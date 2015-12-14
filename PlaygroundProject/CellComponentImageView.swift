@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 AllblueTechnology. All rights reserved.
 //
 
+import AlamofireImage
+
 class CellComponentImageView : UIImageView, CellComponentProtocol {
     
     var componentKey = ""
@@ -34,12 +36,13 @@ class CellComponentImageView : UIImageView, CellComponentProtocol {
     }
     
     func update(item: AnyObject) {
-        guard let element = item as? Element else {
-            assert(false, "can't handle item \(item) type")
+        guard let element = item as? Element,
+            let url = NSURL(string: element.avatalUrl) else {
             return
         }
-        
-        print(element)
+
+        self.af_setImageWithURL(url)
+
     }
 
     func cleanUp() {
